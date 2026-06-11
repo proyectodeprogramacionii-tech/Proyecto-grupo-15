@@ -18,9 +18,10 @@ def cuantas_comas_dataset(linea,dato):
                     buscador=""
                     comas+=1
     return comas
-def appendear_autos(lis,linea,coma_var,comas_vei):
+
+def appendear_autos(lis,linea,comas_vei):
     vei=""
-    
+    coma_var=0
     for char in linea:
             if char==",":
                 coma_var+=1
@@ -34,8 +35,7 @@ def appendear_autos(lis,linea,coma_var,comas_vei):
             elif coma_var>comas_vei:
                 if vei!="":
                     lis.append(vei)
-                    vei=""
-            return lis
+    return lis
     
 def tipo_de_auto():
     lista_de_autos=[]
@@ -44,77 +44,11 @@ def tipo_de_auto():
     comas_vei3=cuantas_comas_dataset(linea_titulos,"VEHICLE TYPE CODE 3")
     comas_vei4=cuantas_comas_dataset(linea_titulos,"VEHICLE TYPE CODE 4")
     comas_vei5=cuantas_comas_dataset(linea_titulos,"VEHICLE TYPE CODE 5")
-    coma_var=0
-    vei=""
     for linea in dataset:
-        for char in linea:
-            if char==",":
-                coma_var+=1
-            
-            if coma_var==comas_vei1:
-                if char!="/":
-                    vei+=char
-                else:
-                    lista_de_autos.append(vei)
-                    vei=""
-            elif coma_var>comas_vei1:
-                if vei!="":
-                    lista_de_autos.append(vei)
-                    vei=""
-            coma_var=0
-        for char in linea:
-            if char==",":
-                coma_var+=1
-            if coma_var==comas_vei2:
-                if char!="/":
-                    vei+=char
-                else:
-                    lista_de_autos.append(vei)
-                    vei=""
-            else:
-                if vei!="":
-                    lista_de_autos.append(vei)
-                    vei=""
-        for char in linea:
-            if coma_var<comas_vei3:
-                coma_var+=1
-            elif coma_var==comas_vei3:
-                if char!="/":
-                    vei+=char
-                else:
-                    lista_de_autos.append(vei)
-                    vei=""
-            else:
-                if vei!="":
-                    lista_de_autos.append(vei)
-                    vei=""
-        for char in linea:
-            if coma_var<comas_vei4:
-                coma_var+=1
-            elif coma_var==comas_vei4:
-                if char!="/":
-                    vei+=char
-                else:
-                    lista_de_autos.append(vei)
-                    vei=""
-            else:
-                if vei!="":
-                    lista_de_autos.append(vei)
-                    vei=""
-            coma_var=0
-        for char in linea:
-            if coma_var<comas_vei5:
-                coma_var+=1
-            elif coma_var==comas_vei5:
-                if char!="/":
-                    vei+=char
-                else:
-                    lista_de_autos.append(vei)
-                    vei=""
-            else:
-                if vei!="":
-                    lista_de_autos.append(vei)
-                    vei=""
-            coma_var=0
+        lista_de_autos=appendear_autos(lista_de_autos,linea,comas_vei1)
+        lista_de_autos=appendear_autos(lista_de_autos,linea,comas_vei2)
+        lista_de_autos=appendear_autos(lista_de_autos,linea,comas_vei3)
+        lista_de_autos=appendear_autos(lista_de_autos,linea,comas_vei4)
+        lista_de_autos=appendear_autos(lista_de_autos,linea,comas_vei5)
     return lista_de_autos
 def contar_autos

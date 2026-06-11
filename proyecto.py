@@ -18,7 +18,25 @@ def cuantas_comas_dataset(linea,dato):
                     buscador=""
                     comas+=1
     return comas
-
+def appendear_autos(lis,linea,coma_var,comas_vei):
+    vei=""
+    
+    for char in linea:
+            if char==",":
+                coma_var+=1
+            
+            if coma_var==comas_vei:
+                if char!="/":
+                    vei+=char
+                else:
+                    lis.append(vei)
+                    vei=""
+            elif coma_var>comas_vei:
+                if vei!="":
+                    lis.append(vei)
+                    vei=""
+            return lis
+    
 def tipo_de_auto():
     lista_de_autos=[]
     comas_vei1=cuantas_comas_dataset(linea_titulos,"VEHICLE TYPE CODE 1")
@@ -30,22 +48,24 @@ def tipo_de_auto():
     vei=""
     for linea in dataset:
         for char in linea:
-            if coma_var<comas_vei1:
+            if char==",":
                 coma_var+=1
-            elif coma_var==comas_vei1:
+            
+            if coma_var==comas_vei1:
                 if char!="/":
                     vei+=char
                 else:
                     lista_de_autos.append(vei)
                     vei=""
-            else:
+            elif coma_var>comas_vei1:
                 if vei!="":
                     lista_de_autos.append(vei)
                     vei=""
+            coma_var=0
         for char in linea:
-            if coma_var<comas_vei2:
+            if char==",":
                 coma_var+=1
-            elif coma_var==comas_vei2:
+            if coma_var==comas_vei2:
                 if char!="/":
                     vei+=char
                 else:
@@ -80,7 +100,8 @@ def tipo_de_auto():
             else:
                 if vei!="":
                     lista_de_autos.append(vei)
-                    vei=""                  
+                    vei=""
+            coma_var=0
         for char in linea:
             if coma_var<comas_vei5:
                 coma_var+=1
@@ -94,5 +115,6 @@ def tipo_de_auto():
                 if vei!="":
                     lista_de_autos.append(vei)
                     vei=""
+            coma_var=0
     return lista_de_autos
 def contar_autos

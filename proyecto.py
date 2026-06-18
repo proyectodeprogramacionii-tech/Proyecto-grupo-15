@@ -27,6 +27,8 @@ def dic(lista):
 
 #print(dic(diccionario()))
 #print(dic(diccionario()).keys())
+def coma_a_punto(string):
+    return string.replace(",", ".")
 
 def separador_barras(lis,dato):
     palabra=""
@@ -118,7 +120,7 @@ def total_de_5(diccionario):
     return var
 
 def suma_5listas(l1,l2,l3,l4,l5):
-    var=separador_barras(l1)+separador_barras(l2)+separador_barras(l3)+separador_barras(l4)+separador_barras(l5)
+    var=separador_barras([],l1)+separador_barras([],l2)+separador_barras([],l3)+separador_barras([],l4)+separador_barras([],l5)
     return var
 def diccionario_factores(diccionario):
     lista1=diccionario["CONTRIBUTING FACTOR VEHICLE 1"]
@@ -133,22 +135,29 @@ def diccionario_factores(diccionario):
         var=suma_5listas(lista1[index],lista2[index],lista3[index],lista4[index],lista5[index])
         for factor in var:
             if factor!="":
-                if factor not in dic:
-                    dic[factor]=[[int(listalat[index])],[int(listalon[index])]]
-                else:
-                    dic[factor][0].append(int(listalat[index]))
-                    dic[factor][1].append(int(listalon[index]))
+                if listalat[index] != "" and listalon[index] != "":
+                    lat=float(coma_a_punto(listalat[index]))
+                    long=float(coma_a_punto(listalon[index]))
+                    if factor not in dic:
+                        dic[factor]=[[lat],[long]]
+                    else:
+                        dic[factor][0].append(lat)
+                        dic[factor][1].append(long)
     return dic
 
 
 def cual_factor(diccionario):
-    st.selectbox("Seleccione el factor contribuyente al accidente", options, index=0, format_func=special_internal_function, 
-                 key=None, help=None,on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, 
+    nom=[]
+    for x in diccionario:
+        nom.append(x)
+    factor=st.selectbox("Seleccione el factor contribuyente al accidente", nom, index=0, 
+                 key=None, help=None,on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, 
                  label_visibility="visible", accept_new_options=False, filter_mode="fuzzy", width="stretch", bind=None)
+    return factor
 
-ef mapa_factores(diccionario,factor):
+def mapa_factores(diccionario,factor="Driver Inattention"):
     dic=diccionario_factores(diccionario)
-    st.map(data=dic, latitude=dic[factor][0], longitude=dic[factor][1], color=None, size=None, zoom=None, width="stretch", height=500, use_container_width=None)
+    st.map(data={"lat":dic[factor][0],"lon":dic[factor][1]}, latitude=None, longitude=None, color=None, size=None, zoom=None, width="stretch", height=500, use_container_width=None)
 
 
 def grafico_torta(diccionario):
@@ -160,22 +169,32 @@ def grafico_torta(diccionario):
     labels = nom[0], nom[1], nom[2], nom[3],nom[4]
     sizes = [le_5[nom[0]]/total, le_5[nom[1]]/total, le_5[nom[2]]/total, le_5[nom[3]]/total,le_5[nom[4]]/total]
     fig , ax = plt.subplots()
-    ax.pie(sizes, labels=labels)
-    ax.set_title("¿cuales son las cinco clases de vehiculos que mas accidentes sufren?")
+    ax.pie(sizes, labels=labels,colors=["red","green","black","yellow","orange"])
+    ax.set_title("¿Cuáles son las cinco clases de vehiculos que mas accidentes sufren?")
     return fig
 
 
+def distribucion_pantalla(estructura_datos):
+    dic_autos=(conteo_autos(lista_de_autos(estructura_datos)))
+    dic_factores=diccionario_factores(estructura_datos)
+
+    st.set_page_config(layout="wide")
+    st.title("Accidentes en Nueva York", anchor=None, help=None, width="stretch", text_alignment="left")
+    col1, col2 = st.columns(2,gap="medium", vertical_alignment="top", border=False, width="stretch")
+    with col1:
+        st.header("Localización de accidentes según el factor de riesgo que lo induce: ", anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
+        factor=cual_factor(dic_factores)
+        mapa_factores(estructura_datos,factor)
+    with col2:
+        fig_torta_autos= grafico_torta(dic_autos)
+        st.pyplot(fig_torta_autos)
 
 
 #def lista_de_accidentes():
 def main():
     estructura_datos=dic(diccionario())
-    dicc=(conteo_autos(lista_de_autos(estructura_datos)))
-    grafico_torta(dicc)
-    print(estructura_datos["LATITUDE"])
+    distribucion_pantalla(estructura_datos)
+   
     
-    fig = grafico_torta(dicc)
-    st.pyplot(fig)
-    print(total_de_5(mayores_cinco(dicc)))
-
+    
 main()

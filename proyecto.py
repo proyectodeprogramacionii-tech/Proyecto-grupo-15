@@ -42,4 +42,6 @@ def conteo_autos(lista):
             dic_cont[auto]=1
     return dic_cont
 
-print(conteo_autos(lista_de_autos()))
+st.write(conteo_autos(lista_de_autos()))
+
+def lista_de_accidentes():

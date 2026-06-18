@@ -10,6 +10,7 @@ def separador_barras(lis,dato):
             else:
                 lis.append(palabra)
                 palabra=""
+    lis.append(palabra)
     return lis
     
 
@@ -38,6 +39,7 @@ def conteo_autos(lista):
         if auto in dic_cont:
             dic_cont[auto]+=1
         else:
-            dic_cont[auto]=0
+            dic_cont[auto]=1
+    return dic_cont
 
 print(conteo_autos(lista_de_autos()))

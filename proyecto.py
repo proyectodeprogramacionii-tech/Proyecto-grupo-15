@@ -1,6 +1,16 @@
+import csv
+import codecs
 import streamlit as st
-import dataset
-st.write("empecemos a trabajar equipo")
+import matplotlib.pyplot as plt
+
+#st.write("empecemos a trabajar equipo")
+
+def diccionario():
+    import csv
+    with open('eggs.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in spamreader:
+        print(', '.join(row))
 def separador_barras(lis,dato):
     palabra=""
     for char in dato:

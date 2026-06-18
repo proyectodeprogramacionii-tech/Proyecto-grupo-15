@@ -109,22 +109,46 @@ def mayores_cinco(diccionario):
     los_5[max_variable5[0]]=max_variable5[1]
     return los_5
 
-print(mayores_cinco({
-    "a":1000,
-    "b":5,
-    "c":800,
-    "d":20,
-    "e":700,
-    "f":10,
-    "g":600
-}))
+#print(mayores_cinco({"a":1000,"b":5,"c":800,"d":20,"e":700,"f":10,"g":600}))
+
 def total_de_5(diccionario):
     var=0
     for item in diccionario.values():
         var+=item
     return var
-        
 
+def suma_5listas(l1,l2,l3,l4,l5):
+    var=separador_barras(l1)+separador_barras(l2)+separador_barras(l3)+separador_barras(l4)+separador_barras(l5)
+    return var
+def diccionario_factores(diccionario):
+    lista1=diccionario["CONTRIBUTING FACTOR VEHICLE 1"]
+    lista2=diccionario["CONTRIBUTING FACTOR VEHICLE 2"]
+    lista3=diccionario["CONTRIBUTING FACTOR VEHICLE 3"]
+    lista4=diccionario["CONTRIBUTING FACTOR VEHICLE 4"]
+    lista5=diccionario["CONTRIBUTING FACTOR VEHICLE 5"]
+    listalat=diccionario["LATITUDE"]
+    listalon=diccionario["LONGITUDE"]
+    dic={}
+    for index in range(0,len(lista1)):
+        var=suma_5listas(lista1[index],lista2[index],lista3[index],lista4[index],lista5[index])
+        for factor in var:
+            if factor!="":
+                if factor not in dic:
+                    dic[factor]=[[int(listalat[index])],[int(listalon[index])]]
+                else:
+                    dic[factor][0].append(int(listalat[index]))
+                    dic[factor][1].append(int(listalon[index]))
+    return dic
+
+
+def cual_factor(diccionario):
+    st.selectbox("Seleccione el factor contribuyente al accidente", options, index=0, format_func=special_internal_function, 
+                 key=None, help=None,on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, 
+                 label_visibility="visible", accept_new_options=False, filter_mode="fuzzy", width="stretch", bind=None)
+
+ef mapa_factores(diccionario,factor):
+    dic=diccionario_factores(diccionario)
+    st.map(data=dic, latitude=dic[factor][0], longitude=dic[factor][1], color=None, size=None, zoom=None, width="stretch", height=500, use_container_width=None)
 
 
 def grafico_torta(diccionario):
@@ -137,6 +161,7 @@ def grafico_torta(diccionario):
     sizes = [le_5[nom[0]]/total, le_5[nom[1]]/total, le_5[nom[2]]/total, le_5[nom[3]]/total,le_5[nom[4]]/total]
     fig , ax = plt.subplots()
     ax.pie(sizes, labels=labels)
+    ax.set_title("¿cuales son las cinco clases de vehiculos que mas accidentes sufren?")
     return fig
 
 
@@ -147,7 +172,8 @@ def main():
     estructura_datos=dic(diccionario())
     dicc=(conteo_autos(lista_de_autos(estructura_datos)))
     grafico_torta(dicc)
-    #print(mayores_cinco(dicc))
+    print(estructura_datos["LATITUDE"])
+    
     fig = grafico_torta(dicc)
     st.pyplot(fig)
     print(total_de_5(mayores_cinco(dicc)))

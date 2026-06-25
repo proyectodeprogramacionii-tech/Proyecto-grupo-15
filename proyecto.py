@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 
 #iniciar con python -m streamlit run proyecto.py
 
-
 def dataset():
     """
     lista de lista donde cada lista es una fila del excel de donde recibo la informacion
@@ -56,9 +55,8 @@ def separador_barras(lis,dato):
             else:
                 lis.append(palabra)
                 palabra=""  
-    lis.append(palabra)
     return lis
-
+    
 def suma_5listas(l1,l2,l3,l4,l5):
     """
     l1:list(str)

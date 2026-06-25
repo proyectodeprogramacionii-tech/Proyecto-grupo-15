@@ -33,6 +33,7 @@ def main():
     lista=[]
     while linea != '':
         linea = archivo.readline()
-        lista=string_a_lista(lista)
+        lista+=string_a_lista(lista)
+    return dic(lista)
         
 archivo.close()

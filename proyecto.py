@@ -54,7 +54,8 @@ def separador_barras(lis,dato):
                 palabra+=char
             else:
                 lis.append(palabra)
-                palabra=""  
+                palabra="" 
+    lis.append(palabra) 
     return lis
     
 def suma_5listas(l1,l2,l3,l4,l5):
@@ -210,9 +211,10 @@ def conteo_lista_calles(lista):
     list(list(string))->dic(string)(int)
     recibe una lista de listas de 3 elementos que son todos string, devuelve un diccionario donde las claves son todas los elementos distintos y
     su valor un int que refleja la cantidad de veces que aparece
-    conteo([["hola","",""],["","","adios"],["malos","adios",""]])=={"hola":1,"adios":1,"entre malos y adios":1}
-    conteo([["hola","",""],["hola","",""],["malos","adios",""]])=={"hola":2,"entre malos y adios":1}
-    conteo([["malos","adios",""],["malos","adios",""],["malos","adios",""]])=={"entre malos y adios":3}
+    ej:
+    conteo([["hola","",""],["","","adios"],["malos","adios",""]])=={"hola":1,"adios":1,"Entre malos y adios":1}
+    conteo([["hola","",""],["hola","",""],["malos","adios",""]])=={"hola":2,"Entre malos y adios":1}
+    conteo([["malos","adios",""],["malos","adios",""],["malos","adios",""]])=={"Entre malos y adios":3}
     """
     dic_cont={}
     for calle in lista:
@@ -222,7 +224,7 @@ def conteo_lista_calles(lista):
             if calle[1] == "":
                 clave = calle[0]
             else:
-                clave = "entre " + calle[0] + " y " + calle[1]
+                clave = "Entre " + calle[0] + " y " + calle[1]
         if clave in dic_cont:
             dic_cont[clave] += 1
         else:

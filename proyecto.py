@@ -218,7 +218,7 @@ def conteo_lista_calles(lista):
     """
     dic_cont={}
     for calle in lista:
-        if  lista[0]=="":
+        if  calle[0]=="":
             clave = calle[2]   
         else:
             if calle[1] == "":

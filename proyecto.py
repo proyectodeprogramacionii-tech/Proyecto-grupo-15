@@ -20,7 +20,7 @@ def dic(lista):
     """
     lista:list(list)
     list(list)->dic(list)
-    recibe una lista
+    recibe una lista de listas
     """
     titulos=lista[0]
     demas_data=lista[1:]
@@ -77,6 +77,7 @@ def lista_de_autos(diccionario):
     lista3=diccionario["VEHICLE TYPE CODE 3"]
     lista4=diccionario["VEHICLE TYPE CODE 4"]
     lista5=diccionario["VEHICLE TYPE CODE 5"]
+    listafinal=lista1+lista2
     lis=[]
     for dato in lista1:
         lis=separador_barras(lis,dato)

@@ -189,7 +189,7 @@ def lista_calles(diccionario):
     """
     diccionario:dic(str)[list]
     dicc->list
-    recibe un diccionario y devuelve los nombres de las calles en donde hubo un accidente
+    recibe un diccionario y devuelve una lista de 3 elementos con los nombres de las calles en donde sucedio un accidente
     """
     lista1=diccionario["ON STREET NAME"]
     lista2=diccionario["CROSS STREET NAME"]

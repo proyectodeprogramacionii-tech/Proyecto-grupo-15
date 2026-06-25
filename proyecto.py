@@ -188,8 +188,12 @@ def diccionario_factores(diccionario):
 def lista_calles(diccionario):
     """
     diccionario:dic(str)[list]
-    dicc->list
+    dicc->list[string]
     recibe un diccionario y devuelve una lista de 3 elementos con los nombres de las calles en donde sucedio un accidente
+    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":[3,4,6,12],"OFF STREET NAME":["","","",""]}))==[[1,3,""],[2,4,""],[34,6,""],[45,12,""]]
+    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["","","",""]}))==[[1,"",""],[2,"",""],[34,"",""],[45,"",""]]
+    lista({"ON STREET NAME":["","","",""],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["a","b","c","d"]}))==[["","","a"],["","","b"],["","","c"],["","","d"]]
+
     """
     lista1=diccionario["ON STREET NAME"]
     lista2=diccionario["CROSS STREET NAME"]
@@ -204,8 +208,11 @@ def conteo_lista_calles(lista):
     """
     lista:list(string)
     list(list(string))->dic(string)(int)
-    recibe una lista de listas, devuelve un diccionario donde las claves son todas los elementos distintos y
+    recibe una lista de listas de 3 elementos que son todos string, devuelve un diccionario donde las claves son todas los elementos distintos y
     su valor un int que refleja la cantidad de veces que aparece
+    conteo([["hola","",""],["","","adios"],["malos","adios",""]])=={"hola":1,"adios":1,"entre malos y adios":1}
+    conteo([["hola","",""],["hola","",""],["malos","adios",""]])=={"hola":2,"entre malos y adios":1}
+    conteo([["malos","adios",""],["malos","adios",""],["malos","adios",""]])=={"entre malos y adios":3}
     """
     dic_cont={}
     for calle in lista:

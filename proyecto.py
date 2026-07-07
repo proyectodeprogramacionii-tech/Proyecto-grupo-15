@@ -9,7 +9,7 @@ def dataset():
     """
     lista de lista donde cada lista es una fila del excel de donde recibo la informacion
     """
-    with open('ny_testing - Hoja 1.csv', encoding="utf-8") as csvfile:
+    with open('Motor_Vehicle_Collisions_sample_12K.csv', encoding="utf-8") as csvfile:
         dataset = csv.reader(csvfile)
         lista = []
         for row in dataset:

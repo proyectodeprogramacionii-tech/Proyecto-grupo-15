@@ -40,6 +40,7 @@ def coma_a_punto(string):
 
 def separador_barras(lis,dato):
     """
+    lis
     dato:string
     string-> list(string)
     recibe un string y analiza si tiene una barra que separa el texto, si no la tiene 
@@ -77,17 +78,9 @@ def lista_de_autos(diccionario):
     lista3=diccionario["VEHICLE TYPE CODE 3"]
     lista4=diccionario["VEHICLE TYPE CODE 4"]
     lista5=diccionario["VEHICLE TYPE CODE 5"]
-    listafinal=lista1+lista2
+    listafinal=lista1+lista2+lista3+lista4+lista5
     lis=[]
-    for dato in lista1:
-        lis=separador_barras(lis,dato)
-    for dato in lista2:
-        lis=separador_barras(lis,dato)
-    for dato in lista3:
-        lis=separador_barras(lis,dato)
-    for dato in lista4:
-        lis=separador_barras(lis,dato)
-    for dato in lista5:
+    for dato in listafinal:
         lis=separador_barras(lis,dato)
     return lis
 

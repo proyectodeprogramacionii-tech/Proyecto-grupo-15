@@ -171,14 +171,15 @@ def diccionario_factores(diccionario):
         var=suma_5listas(lista1[index],lista2[index],lista3[index],lista4[index],lista5[index])
         for factor in var:
             if factor!="":
-                if listalat[index] != "" and listalon[index] != "":
-                    lat=float(coma_a_punto(listalat[index]))
-                    long=float(coma_a_punto(listalon[index]))
-                    if factor not in dic:
-                        dic[factor]=[[lat],[long]]
-                    else:
-                        dic[factor][0].append(lat)
-                        dic[factor][1].append(long)
+                if listalat[index]!="0"  and listalon[index]!="0":
+                    if listalat[index] != "" and listalon[index] != "":
+                        lat=float(coma_a_punto(listalat[index]))
+                        long=float(coma_a_punto(listalon[index]))
+                        if factor not in dic:
+                            dic[factor]=[[lat],[long]]
+                        else:
+                            dic[factor][0].append(lat)
+                            dic[factor][1].append(long)
     return dic
 
 def lista_calles(diccionario):

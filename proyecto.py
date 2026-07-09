@@ -81,7 +81,7 @@ def lista_de_autos(diccionario):
     listafinal=lista1+lista2+lista3+lista4+lista5
     lis=[]
     for dato in listafinal:
-        if dato!= '':
+        if dato!= ' ':
             lis=separador_barras(lis,dato)
     return lis
 

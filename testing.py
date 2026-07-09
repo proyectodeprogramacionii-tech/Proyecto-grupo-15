@@ -28,9 +28,6 @@ def dic(lista):
         var+=1
     return dicc
 
-print(diccionario_factores(dic(dataset())))
-
-
 def test_coma_a_punto():
     assert(coma_a_punto("hola mundo"))=="hola mundo"
     assert(coma_a_punto("hola, mundo"))=="hola. mundo"
@@ -127,8 +124,3 @@ def test_conteo_lista_calles():
     assert(conteo_lista_calles([["hola","",""],["","","adios"],["malos","adios",""]]))=={"hola":1,"adios":1,"Entre malos y adios":1}
     assert(conteo_lista_calles([["hola","",""],["hola","",""],["malos","adios",""]]))=={"hola":2,"Entre malos y adios":1}
     assert(conteo_lista_calles([["malos","adios",""],["malos","adios",""],["malos","adios",""]]))=={"Entre malos y adios":3}
-
-##def test_lista():
-##    assert (lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":[3,4,6,12],"OFF STREET NAME":["","","",""]}))==[[1,3,""],[2,4,""],[34,6,""],[45,12,""]]
-##    assert (lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["","","",""]}))==[[1,"",""],[2,"",""],[34,"",""],[45,"",""]]
-##    assert (lista({"ON STREET NAME":["","","",""],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["a","b","c","d"]}))==[["","","a"],["","","b"],["","","c"],["","","d"]]

@@ -27,7 +27,7 @@ def dic(lista):
             dicc[titulo].append(linea[var])
         var+=1
     return dicc
-
+print(lista_de_autos(dataset()))
 print(diccionario_factores(dic(dataset())))
 
 
@@ -47,7 +47,21 @@ def test_suma_5listas():
     assert(suma_5listas([1],[2],[3],[46],[5]))==[1,2,3,46,5]
 
 def test_lista_de_autos():
-    assert(lista_de_autos(dic(dataset())))==['Refrigerated Van', 'Station Wagon', 'Sport Utility Vehicle', 'Box Truck', 'Sedan', 'TRAC', 'Pick-up Truck', 'Sedan', 'Sedan', '', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Bike', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Taxi', 'Station Wagon', 'Sport Utility Vehicle', 'Pick-up Truck', 'Sedan', 'Flat Bed', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Sedan', '', '', 'Box Truck', '', '4 dr sedan', '', '', '', '', 'Sedan', '', 'Station Wagon', 'Sport Utility Vehicle', 'Taxi', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Bike', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', '', 'Station Wagon', 'Sport Utility Vehicle', '', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Bike', '', '', 'Sedan', 'Garbage or Refuse', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', '', '', 'Box Truck', '', '', '', '', '', '', '', '', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Box Truck', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+    assert(lista_de_autos(dic(dataset())))==['Refrigerated Van', 'Station Wagon', 'Sport Utility Vehicle', 'Box Truck', 'Sedan', 
+                                             'TRAC', 'Pick-up Truck', 'Sedan', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', 
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan',
+                                             'Sedan', 'Bike', 'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 
+                                             'Sport Utility Vehicle', 'Taxi', 'Station Wagon', 'Sport Utility Vehicle', 'Pick-up Truck', 
+                                             'Sedan', 'Flat Bed', 'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Sedan', 
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Sedan', 'Box Truck', 
+                                             '4 dr sedan', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', 'Taxi', 'Station Wagon', 
+                                             'Sport Utility Vehicle', 'Sedan', 'Sedan', 'Bike', 'Station Wagon', 'Sport Utility Vehicle',
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Station Wagon', 'Sport Utility Vehicle', 
+                                             'Station Wagon', 'Sport Utility Vehicle', '', 'Station Wagon', 'Sport Utility Vehicle', 
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Bike', 'Sedan', 'Garbage or Refuse', 'Sedan', 
+                                             'Station Wagon', 'Sport Utility Vehicle', 'Box Truck', 'Sedan', 'Station Wagon', 
+                                             'Sport Utility Vehicle']
 
 def test_mayores_cinco():
     assert(mayores_cinco({"A":4,"B":66,"C":32,"D":23,"E":45}))=={"B":66,"E":45,"C":32,"D":23,"A":4}

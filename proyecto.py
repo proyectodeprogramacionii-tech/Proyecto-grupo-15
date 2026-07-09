@@ -185,9 +185,12 @@ def lista_calles(diccionario):
     diccionario:dic(str)[list]
     dicc->list[string]
     recibe un diccionario y devuelve una lista de 3 elementos con los nombres de las calles en donde sucedio un accidente
-    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":[3,4,6,12],"OFF STREET NAME":["","","",""]}))==[[1,3,""],[2,4,""],[34,6,""],[45,12,""]]
-    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["","","",""]}))==[[1,"",""],[2,"",""],[34,"",""],[45,"",""]]
-    lista({"ON STREET NAME":["","","",""],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["a","b","c","d"]}))==[["","","a"],["","","b"],["","","c"],["","","d"]]
+    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":[3,4,6,12],"OFF STREET NAME":["","","",""]}))==
+                                                                    [[1,3,""],[2,4,""],[34,6,""],[45,12,""]]
+    lista({"ON STREET NAME":[1,2,34,45],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["","","",""]}))==
+                                                                    [[1,"",""],[2,"",""],[34,"",""],[45,"",""]]
+    lista({"ON STREET NAME":["","","",""],"CROSS STREET NAME":["","","",""],"OFF STREET NAME":["a","b","c","d"]}))==
+                                                                    [["","","a"],["","","b"],["","","c"],["","","d"]]
 
     """
     lista1=diccionario["ON STREET NAME"]
@@ -203,7 +206,8 @@ def conteo_lista_calles(lista):
     """
     lista:list(string)
     list(list(string))->dic(string)(int)
-    recibe una lista de listas de 3 elementos que son todos string, devuelve un diccionario donde las claves son todas los elementos distintos y
+    recibe una lista de listas de 3 elementos que son todos string, 
+    devuelve un diccionario donde las claves son todas los elementos distintos y
     su valor un int que refleja la cantidad de veces que aparece
     ej:
     conteo([["hola","",""],["","","adios"],["malos","adios",""]])=={"hola":1,"adios":1,"Entre malos y adios":1}
@@ -240,7 +244,8 @@ def cual_factor(diccionario):
 
 def mapa_factores(diccionario,factor="Driver Inattention"):
     dic=diccionario_factores(diccionario)
-    st.map(data={"lat":dic[factor][0],"lon":dic[factor][1]}, latitude=None, longitude=None, color=None, size=None, zoom=None, width="stretch", height=500, use_container_width=None)
+    st.map(data={"lat":dic[factor][0],"lon":dic[factor][1]}, latitude=None, longitude=None, 
+           color=None, size=None, zoom=None, width="stretch", height=500, use_container_width=None)
 
 
 def grafico_torta(diccionario):
@@ -267,13 +272,15 @@ def distribucion_pantalla(estructura_datos):
     st.title("Accidentes en Nueva York", anchor=None, help=None, width="stretch", text_alignment="left")
     col1, col2 = st.columns(2,gap="medium", vertical_alignment="top", border=False, width="stretch")
     with col1:
-        st.header("Localización de accidentes según el factor de riesgo que lo induce: ", anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
+        st.header("Localización de accidentes según el factor de riesgo que lo induce: ", 
+                  anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
         factor=cual_factor(dic_factores)
         mapa_factores(estructura_datos,factor)
         st.header("Calles mas accidentadas", anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
         tabla_calles(calles_5)
     with col2:
-        st.header("clases de autos con mas tendencia a estar involucrados en un accidente ", anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
+        st.header("clases de autos con mas tendencia a estar involucrados en un accidente ", 
+                  anchor=None, help=None, divider=False, width="stretch", text_alignment="center")
         fig_torta_autos= grafico_torta(dic_autos)
         st.pyplot(fig_torta_autos)
 

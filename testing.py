@@ -27,7 +27,7 @@ def dic(lista):
             dicc[titulo].append(linea[var])
         var+=1
     return dicc
-print(lista_de_autos(dataset()))
+print(lista_de_autos(dic(dataset())))
 print(diccionario_factores(dic(dataset())))
 
 

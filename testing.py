@@ -8,23 +8,6 @@ def dataset():
             lista.append(row)
         return lista
 
-def dic(lista):
-    """
-    lista:list(list)
-    list(list)->dic(list)
-    recibe una lista de listas
-    """
-    titulos=lista[0]
-    demas_data=lista[1:]
-    dicc={}
-    var=0
-    for titulo in titulos:
-        dicc[titulo]=[]
-        for linea in demas_data:
-            dicc[titulo].append(linea[var])
-        var+=1
-    return dicc
-
 def test_coma_a_punto():
     assert(coma_a_punto("hola mundo"))=="hola mundo"
     assert(coma_a_punto("hola, mundo"))=="hola. mundo"

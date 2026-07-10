@@ -1,9 +1,6 @@
 from proyecto import *
 
 def dataset():
-    """
-    lista de lista donde cada lista es una fila del excel de donde recibo la informacion
-    """
     with open('ny_testing - Hoja 1.csv', encoding="utf-8") as csvfile:
         dataset = csv.reader(csvfile)
         lista = []
@@ -39,8 +36,8 @@ def test_separador_barras():
     assert(separador_barras(["adios"],"hola/mundo"))==["adios","hola","mundo"]
 
 def test_suma_5listas():
-    assert(suma_5listas([" "],[" "],[" "],[" "],[" "]))==[" "," "," "," "," "]
-    assert(suma_5listas(["1"],["2"],["3"],["4"],["5"]))==["1","2","3","4","5"]
+    assert(suma_5strings([" "],[" "],[" "],[" "],[" "]))==[" "," "," "," "," "]
+    assert(suma_5strings(["1"],["2"],["3"],["4"],["5"]))==["1","2","3","4","5"]
 
 def test_lista_de_autos():
     assert(lista_de_autos(dic(dataset())))==['Refrigerated Van', 'Station Wagon', 'Sport Utility Vehicle', 'Box Truck', 

@@ -59,15 +59,15 @@ def separador_barras(lis,dato):
     lis.append(palabra) 
     return lis
     
-def suma_5listas(l1,l2,l3,l4,l5):
+def suma_5strings(l1,l2,l3,l4,l5):
     """
-    l1:list(str)
-    l2:list(str)
-    l3:list(str)
-    l4:list(str)
-    l5:list(str)
+    l1:string
+    l2:string
+    l3:string
+    l4:string
+    l5:string
     l1,l2,l3,l4,l5->list(str)
-    recibe 5 listas de  string y devuelve una sola
+    recibe 5 string y devuelve una lista de string,revisando que no tenga ninguma barra
     """
     var=separador_barras([],l1)+separador_barras([],l2)+separador_barras([],l3)+separador_barras([],l4)+separador_barras([],l5)
     return var
@@ -105,6 +105,10 @@ def mayores_cinco(diccionario):
     diccionario:dicc(str)[int]
     dicc->dicc
     recibe un diccionario y devuelve los 5 valores mas grandes
+    mayores_cinco({"A":4,"B":66,"C":32,"D":23,"E":45})=={"B":66,"E":45,"C":32,"D":23,"A":4}
+    mayores_cinco({"A":1,"B":2,"C":3,"D":4,"E":5})=={"A":1,"B":2,"C":3,"D":4,"E":5}
+    mayores_cinco({"A":90,"B":80,"C":70,"D":60,"E":50,"F":40})=={"A":90,"B":80,"C":70,"D":60,"E":50}
+
     """
     los_5={}
     max_variable1=["",0]
@@ -152,6 +156,9 @@ def suma_de_valores(diccionario):
     diccionario:dicc(string)[int]
     dicc->int    
     suma todos los valores de un diccionario
+    suma_de_valores({"A":4,"B":66,"C":32,"D":23,"E":45})==170
+    suma_de_valores({"A":1,"B":2,"C":3,"D":4,"E":5})==15
+    suma_de_valores({"A":0,"B":0,"C":0,"D":0,"E":0})==0
     """
     var=0
     for item in diccionario.values():
@@ -168,7 +175,7 @@ def diccionario_factores(diccionario):
     listalon=diccionario["LONGITUDE"]
     dic={}
     for index in range(0,len(lista1)):
-        var=suma_5listas(lista1[index],lista2[index],lista3[index],lista4[index],lista5[index])
+        var=suma_5strings(lista1[index],lista2[index],lista3[index],lista4[index],lista5[index])
         for factor in var:
             if factor!="":
                 if listalat[index]!="0"  and listalon[index]!="0":

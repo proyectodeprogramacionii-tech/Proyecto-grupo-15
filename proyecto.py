@@ -33,8 +33,6 @@ def dic(lista):
         var+=1
     return dicc
 
-#print(dic(diccionario()))
-#print(dic(diccionario()).keys())
 def coma_a_punto(string):
     return string.replace(",", ".")
 
@@ -46,7 +44,9 @@ def separador_barras(lis,dato):
     recibe un string y analiza si tiene una barra que separa el texto, si no la tiene 
     forma una lista con un solo elemento que es la string, si tiene una barra, devuelve una lista
     con 2 elementos, con la parte anterior a la barra y la parte que le sigue, exceptuando a la barra
-
+    (separador_barras([],"hola mundo")==["hola mundo"]
+    separador_barras([],"hola/mundo")==["hola","mundo"]
+    separador_barras(["adios"],"hola/mundo")==["adios","hola","mundo"]
     """
     palabra=""
     for char in dato:
@@ -68,11 +68,16 @@ def suma_5strings(l1,l2,l3,l4,l5):
     l5:string
     l1,l2,l3,l4,l5->list(str)
     recibe 5 string y devuelve una lista de string,revisando que no tenga ninguma barra
+    
     """
     var=separador_barras([],l1)+separador_barras([],l2)+separador_barras([],l3)+separador_barras([],l4)+separador_barras([],l5)
     return var
 
 def lista_de_autos(diccionario):
+    """
+    diccionario:diccionary
+    recibe un diccionario y devuelve una lista con todos los autos involucrados en accidentes en New York
+    """
     lista1=diccionario["VEHICLE TYPE CODE 1"]
     lista2=diccionario["VEHICLE TYPE CODE 2"]
     lista3=diccionario["VEHICLE TYPE CODE 3"]
@@ -91,6 +96,7 @@ def conteo_lista(lista):
     list(string)->dic(string)(int)
     recibe una lista de string, devuelve un diccionario donde las claves son todas las string distintas y
     su valor un int que refleja la cantidad de veces que aparece
+    conteo_lista(["1","2","3","4","5","6","1"])=={"1":2,"2":1,"3":1,"4":1,"5":1,"6":1}
     """
     dic_cont={}
     for auto in lista:
@@ -149,8 +155,6 @@ def mayores_cinco(diccionario):
     los_5[max_variable5[0]]=max_variable5[1]
     return los_5
 
-#print(mayores_cinco({"a":1000,"b":5,"c":800,"d":20,"e":700,"f":10,"g":600}))
-
 def suma_de_valores(diccionario):
     """
     diccionario:dicc(string)[int]
@@ -166,6 +170,12 @@ def suma_de_valores(diccionario):
     return var
 
 def diccionario_factores(diccionario):
+    """
+    diccionario:dicc
+    dicc->dicc[string](list(list))
+    toma el diccionario con los accidentes, y forma un diccionario nuevo, donde todos los factores contribuyentes tiene 2 listas
+    una con la latitud y la otra con la longitud del todos los accidentes
+    """
     lista1=diccionario["CONTRIBUTING FACTOR VEHICLE 1"]
     lista2=diccionario["CONTRIBUTING FACTOR VEHICLE 2"]
     lista3=diccionario["CONTRIBUTING FACTOR VEHICLE 3"]

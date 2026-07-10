@@ -20,7 +20,7 @@ def dic(lista):
     """
     lista:list(list)
     list(list)->dic(list)
-    recibe una lista de listas
+    recibe una lista de listas y devuelve un diccionario de listas, donde las claves son los elementos de la primera lista
     """
     titulos=lista[0]
     demas_data=lista[1:]
@@ -75,7 +75,8 @@ def suma_5strings(l1,l2,l3,l4,l5):
 
 def lista_de_autos(diccionario):
     """
-    diccionario:diccionary
+    diccionario:dictionary
+    dict->list
     recibe un diccionario y devuelve una lista con todos los autos involucrados en accidentes en New York
     """
     lista1=diccionario["VEHICLE TYPE CODE 1"]
@@ -110,7 +111,7 @@ def mayores_cinco(diccionario):
     """
     diccionario:dicc(str)[int]
     dicc->dicc
-    recibe un diccionario y devuelve los 5 valores mas grandes
+    recibe un diccionario cuyas claves son strings y items son ints y devuelve los 5 valores mas grandes
     mayores_cinco({"A":4,"B":66,"C":32,"D":23,"E":45})=={"B":66,"E":45,"C":32,"D":23,"A":4}
     mayores_cinco({"A":1,"B":2,"C":3,"D":4,"E":5})=={"A":1,"B":2,"C":3,"D":4,"E":5}
     mayores_cinco({"A":90,"B":80,"C":70,"D":60,"E":50,"F":40})=={"A":90,"B":80,"C":70,"D":60,"E":50}

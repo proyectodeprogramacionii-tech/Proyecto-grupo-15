@@ -39,6 +39,9 @@ def test_lista_de_autos():
                                              'Sport Utility Vehicle', 'Bike', 'Sedan', 'Garbage or Refuse', 'Sedan', 'Station Wagon', 
                                              'Sport Utility Vehicle', 'Box Truck', 'Sedan', 'Station Wagon', 'Sport Utility Vehicle', 
                                              'Box Truck']
+    assert(lista_de_autos({"VEHICLE TYPE CODE 1":['Box Truck'],"VEHICLE TYPE CODE 2":['Box Truck'],
+                           "VEHICLE TYPE CODE 3":['Box Truck'],"VEHICLE TYPE CODE 4":['Box Truck'],
+                           "VEHICLE TYPE CODE 5":['Box Truck']}))==
 
 def test_mayores_cinco():
     assert(mayores_cinco({"A":4,"B":66,"C":32,"D":23,"E":45}))=={"B":66,"E":45,"C":32,"D":23,"A":4}
